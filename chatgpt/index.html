@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAHANATA GROUP - Build by SOS Infobulls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Premium Color Scheme with Enhancements */
+        :root {
+            --primary-bg: linear-gradient(135deg, #1a1a2e, #16213e);
+            --accent: #ffd700;
+            --text: #ffffff;
+            --secondary-bg: rgba(22, 33, 62, 0.9);
+            --hover-bg: #0f3460;
+            --metallic: linear-gradient(45deg, #ffd700, #ffed4e);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--primary-bg);
+            color: var(--text);
+            overflow-x: hidden;
+            animation: fadeIn 1.2s ease-in-out;
+            background-attachment: fixed;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin: 0;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-120px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 0 0 20px 0;
+            color: var(--accent);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-btn {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background: var(--metallic);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        .profile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 1002;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .profile-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 400px;
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1003;
+            opacity: 0;
+            border: 2px solid var(--accent);
+        }
+
+        .profile-popup.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .profile-popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .profile-popup h3 {
+            margin: 0 0 15px 0;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .profile-popup p {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        .profile-popup a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .profile-popup a:hover {
+            background: var(--accent);
+            color: #1a1a2e;
+            transform: scale(1.05);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+        }
+
+        main {
+            padding: 100px 50px 50px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 0 20px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1.8s ease-out;
+        }
+
+        main h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .colonies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .colony-card {
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .colony-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .colony-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .colony-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(255,215,0,0.2));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .colony-card:hover .colony-image::before {
+            opacity: 1;
+        }
+
+        .colony-content {
+            padding: 30px;
+            text-align: left;
+        }
+
+        .colony-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            color: var(--accent);
+        }
+
+        .colony-content p {
+            font-size: 1rem;
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .colony-btn {
+            background: var(--metallic);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .colony-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .colony-card:nth-child(1) { animation: staggerFade 1.5s ease-out 0.2s both; }
+        .colony-card:nth-child(2) { animation: staggerFade 1.5s ease-out 0.4s both; }
+        .colony-card:nth-child(3) { animation: staggerFade 1.5s ease-out 0.6s both; }
+        .colony-card:nth-child(4) { animation: staggerFade 1.5s ease-out 0.8s both; }
+        .colony-card:nth-child(5) { animation: staggerFade 1.5s ease-out 1s both; }
+
+        @keyframes staggerFade {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px 30px;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .profile-btn {
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            .profile-popup {
+                width: 320px;
+            }
+            .colonies {
+                grid-template-columns: 1fr;
+            }
+            main {
+                padding: 80px 20px 40px;
+            }
+            .colony-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>MAHANATA GROUP</h1>
+            <p>Build by SOS Infobulls</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Discover Luxury Living</h2>
+            <p>Exclusive colonies crafted for the discerning elite.</p>
+        </div>
+    </section>
+
+    <button class="profile-btn" onclick="toggleProfile()">👤</button>
+
+    <div class="profile-overlay" id="profileOverlay" onclick="toggleProfile()"></div>
+    <div class="profile-popup" id="profilePopup"> <center>
+        <button class="close-btn" onclick="toggleProfile()">×</button>
+        <img src="E:\chatgpt\WhatsApp Image 2025-11-25 at 4.18.33 PM (1).jpeg" alt="Profile Image">
+        <h3>Virendra Singh Parte </h3>
+        <p>Email: virendraparte591@gmail.com</p>
+        <p>Phone: +91 98938 62775</p>
+        <a href="https://www.instagram.com/veerendra_official_real_estate/" target="_blank">Instagram</a>
+        <a href="https://wa.me/77469991555" target="_blank">WhatsApp</a> </center>
+    </div>
+
+    <main>
+        <h2>Explore Our Colonies</h2>
+        <div class="colonies">
+
+            <div class="colony-card">
+                <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="colony-content">
+                    <h3>Colony 1</h3>
+                    <p>Experience unparalleled luxury in our premier residential enclave, featuring state-of-the-art amenities and breathtaking views.</p>
+                    <a href="c1.html"> <button class="colony-btn" >Explore</button> </a>
+                </div>
+            </div>
+
+            <div class="colony-card">
+                <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="colony-content">
+                    <h3>Colony 2</h3>
+                    <p>Indulge in modern elegance with spacious layouts, premium finishes, and a community designed for sophisticated living.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 2')">Explore</button>
+                </div>
+            </div>
+
+            <div class="colony-card">
+                <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="colony-content">
+                    <h3>Colony 3</h3>
+                    <p>Discover tranquility amidst opulence, with lush landscapes, private gardens, and exclusive access to world-class facilities.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 3')">Explore</button>
+                </div>
+            </div>
+
+            <div class="colony-card">
+                <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="colony-content">
+                    <h3>Colony 4</h3>
+                    <p>Elevate your lifestyle with cutting-edge architecture, smart home features, and a vibrant neighborhood atmosphere.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 4')">Explore</button>
+                </div>
+            </div>
+
+            <div class="colony-card">
+                <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="colony-content">
+                    <h3>Colony 5</h3>
+                    <p>Enjoy luxurious comfort blended with peaceful surroundings, offering top-class amenities and unmatched modern design.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 5')">Explore</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="
+    background: #0d0d0d;
+    padding: 50px 20px;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+">
+
+    <!-- Logo + About -->
+    <div style="flex: 1; min-width: 240px;">
+        <h2 style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 1px;">SOS Infrabulls</h2>
+        <p style="margin-top: 10px; opacity: 0.8; line-height: 1.6;">
+            Premium real estate solutions with trust, quality and transparency.
+        </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1; min-width: 200px;">
+        <h3 style="font-size: 18px; margin-bottom: 10px;">Quick Links</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
+            <li><a href="#home" style="color: #fff; text-decoration: none; opacity: 0.8;">Home</a></li>
+            <li><a href="#about" style="color: #fff; text-decoration: none; opacity: 0.8;">About Us</a></li>
+            <li><a href="#projects" style="color: #fff; text-decoration: none; opacity: 0.8;">Projects</a></li>
+            <li><a href="#contact" style="color: #fff; text-decoration: none; opacity: 0.8;">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div style="flex: 1; min-width: 200px;">
+        <h3 style="font-size: 18px; margin-bottom: 10px;">Contact</h3>
+        <p style="margin: 5px 0; opacity: 0.8;">📍 Shagun Tower , Vijay Nagar , Indore</p>
+        <p style="margin: 5px 0; opacity: 0.8;">📞 +91 9893862775</p>
+        <p style="margin: 5px 0; opacity: 0.8;">✉️ virendraparte591@gmail.com</p>
+    </div>
+
+</footer>
+
+<div style="
+    background: #000;
+    padding: 12px;
+    color: #aaa;
+    text-align: center;
+    font-size: 14px;
+    margin-top: -10px;
+">
+    © 2026 SOS Infrabulls • All Rights Reserved
+</div>
+
+
+    <!-- FIXED POPUP JS (NO CHANGES TO ANY OTHER CODE) -->
+    <script>
+        function toggleProfile() {
+            let popup = document.getElementById("profilePopup");
+            let overlay = document.getElementById("profileOverlay");
+
+            if (popup.classList.contains("active")) {
+                popup.classList.remove("active");
+                overlay.style.display = "none";
+            } else {
+                popup.classList.add("active");
+                overlay.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

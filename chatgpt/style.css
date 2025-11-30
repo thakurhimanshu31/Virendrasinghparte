@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* NAVBAR FIXED */
+.navbar{
+    width: 100%;
+    height: 70px;
+    padding: 0px 50px;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;          /* BULLET POINT FIX */
+    gap: 30px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.navbar a:hover{
+    color: #7b4dff;
+}
+
+/* PROFILE BUTTON */
+.profile-btn img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #7b4dff;
+}
+
+/* HERO FIX */
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-top: 70px;  /* NAVBAR HEIGHT OFFSET FIX */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content{
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(3px);
+    padding: 20px;
+}
+
+.hero-title{
+    font-size: 60px;
+    font-weight: 700;
+}
+
+/* EXPLORE BUTTON */
+.explore-btn{
+    background: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: #7b4dff;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* COLONY SECTION SPACING FIX */
+.colonies{
+    padding: 100px 50px;
+    text-align: center;
+}
+
+.colonies h2{
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.colony-grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+.colony-card{
+    background: white;
+    padding: 35px 0;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: .3s;
+}
+
+.colony-card:hover{
+    transform: scale(1.05);
+    background: linear-gradient(45deg,#ff7eb3,#7b4dff);
+    color: #fff;
+}
+
+/* POPUP */
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0; left:0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    z-index: 99998 !important;
+
+}
+
+.overlay.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup{
+    width: 350px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    text-align: center;
+    transition: 0.4s;
+    z-index: 99999 !important;
+}
+
+.popup.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* PROFILE IMAGE IN POPUP */
+.popup-img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #7b4dff;
+    margin-bottom: 10px;
+}
+
+.popup-name{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* CONTACT ICONS */
+.contact-icons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.icon{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.phone{ background: #0077ff; }
+.whatsapp{ background: #25d366; }
+.instagram{ background: #d6249f; }
+.email{ background: #ff9800; }
+
+/* RESPONSIVE FIX */
+@media(max-width: 768px){
+    .hero-title{ font-size: 40px; }
+    .colony-grid{ grid-template-columns: repeat(2,1fr); }
+}
+
+@media(max-width: 480px){
+    .colony-grid{
+        grid-template-columns: 1fr;
+    }
+}
