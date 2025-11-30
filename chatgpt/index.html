@@ -3,527 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAHANATA GROUP - Build by SOS Infobulls</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>MAHANATA GROUP - Built by SOS Infobulls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Premium Color Scheme with Enhancements */
         :root {
-            --primary-bg: linear-gradient(135deg, #1a1a2e, #16213e);
-            --accent: #ffd700;
-            --text: #ffffff;
-            --secondary-bg: rgba(22, 33, 62, 0.9);
-            --hover-bg: #0f3460;
-            --metallic: linear-gradient(45deg, #ffd700, #ffed4e);
+            --bg-deep: #050505;
+            --bg-panel: #141414;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a1;
+            --glass: rgba(20, 20, 20, 0.7);
+            --border-gold: linear-gradient(45deg, #d4af37, #f3e5ab);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--primary-bg);
-            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
             overflow-x: hidden;
-            animation: fadeIn 1.2s ease-in-out;
-            background-attachment: fixed;
+            background-image: radial-gradient(circle at 50% 0%, #1f1f1f 0%, #000000 70%);
         }
 
+        /* --- Animations --- */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
+        /* --- Header --- */
         header {
+            position: absolute;
+            width: 100%;
+            padding: 40px 50px;
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 50px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(15px);
+        }
+
+        .brand-box h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #fff, #d4af37);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .brand-box p {
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* --- New Profile Button (Access Badge Style) --- */
+        .profile-trigger {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 30px;
+            right: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
             z-index: 1000;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--accent);
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: slideInLeft 1.2s ease-out;
+        .profile-trigger:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin: 0;
-            opacity: 0.9;
-            font-weight: 300;
+        .trigger-text {
+            text-align: right;
+        }
+        .trigger-text span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .trigger-text strong {
+            color: var(--gold-light);
+            font-size: 0.9rem;
         }
 
-        @keyframes slideInLeft {
-            from { transform: translateX(-120px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .trigger-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
         }
 
+        /* --- Hero Section --- */
         .hero {
-            height: 100vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             position: relative;
-            text-align: center;
-            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #050505);
         }
 
         .hero-content {
             z-index: 2;
-            animation: fadeInUp 1.5s ease-out;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin: 0 0 20px 0;
-            color: var(--accent);
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin: 0;
-            font-weight: 300;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .profile-btn {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            background: var(--metallic);
-            color: #1a1a2e;
-            border: none;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            cursor: pointer;
-            font-size: 1.8rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-btn:hover {
-            transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
-        }
-
-        .profile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            z-index: 1002;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .profile-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            width: 400px;
-            background: var(--secondary-bg);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 1003;
-            opacity: 0;
-            border: 2px solid var(--accent);
-        }
-
-        .profile-popup.active {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .profile-popup img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 4px solid var(--accent);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .profile-popup h3 {
-            margin: 0 0 15px 0;
-            color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-        }
-
-        .profile-popup p {
-            margin: 8px 0;
-            font-weight: 400;
-        }
-
-        .profile-popup a {
-            color: var(--accent);
-            text-decoration: none;
-            margin-right: 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .profile-popup a:hover {
-            background: var(--accent);
-            color: #1a1a2e;
-            transform: scale(1.05);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--accent);
-        }
-
-        main {
-            padding: 100px 50px 50px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 0 20px;
-            border-radius: 20px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 1.8s ease-out;
-        }
-
-        main h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cinzel', serif;
             font-size: 3.5rem;
-            margin-bottom: 50px;
-            color: var(--accent);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            color: var(--text-main);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gold-light);
         }
 
-        .colonies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        /* --- Main Content --- */
+        main {
+            padding: 80px 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--gold-primary);
+        }
+
+        .colonies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        /* --- Cards --- */
         .colony-card {
-            background: var(--secondary-bg);
-            border-radius: 20px;
+            background: var(--bg-panel);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
-            cursor: pointer;
-            border: 2px solid transparent;
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .colony-card:hover {
-            transform: translateY(-20px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
-            border-color: var(--accent);
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
         }
 
         .colony-image {
-            width: 100%;
-            height: 250px;
+            height: 280px;
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .colony-image::before {
+        .colony-image::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(255,215,0,0.2));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .colony-card:hover .colony-image::before {
-            opacity: 1;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-panel), transparent);
         }
 
         .colony-content {
-            padding: 30px;
-            text-align: left;
+            padding: 25px 30px 40px;
+            position: relative;
+            margin-top: -50px;
+            z-index: 2;
         }
 
         .colony-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin: 0 0 15px 0;
-            color: var(--accent);
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            margin-bottom: 15px;
         }
 
         .colony-content p {
-            font-size: 1rem;
-            margin: 0 0 20px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
             line-height: 1.6;
-            opacity: 0.9;
+            margin-bottom: 25px;
         }
 
         .colony-btn {
-            background: var(--metallic);
-            color: #1a1a2e;
-            border: none;
-            border-radius: 10px;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 500;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            padding: 12px 30px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: 0.3s;
+            font-weight: 600;
         }
 
         .colony-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        .colony-card:nth-child(1) { animation: staggerFade 1.5s ease-out 0.2s both; }
-        .colony-card:nth-child(2) { animation: staggerFade 1.5s ease-out 0.4s both; }
-        .colony-card:nth-child(3) { animation: staggerFade 1.5s ease-out 0.6s both; }
-        .colony-card:nth-child(4) { animation: staggerFade 1.5s ease-out 0.8s both; }
-        .colony-card:nth-child(5) { animation: staggerFade 1.5s ease-out 1s both; }
-
-        @keyframes staggerFade {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* --- Footer --- */
         footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            margin-top: 50px;
-            font-weight: 300;
+            background: #000;
+            border-top: 1px solid #222;
+            padding: 60px 20px;
+            color: #ccc;
         }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-col h4 {
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: var(--gold-light); }
+
+        /* --- Profile Modal --- */
+        .profile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+        }
+
+        .profile-popup {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%; max-width: 400px;
+            background: #111;
+            border: 1px solid var(--gold-primary);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 2001;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.15);
+        }
+
+        .profile-popup.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .profile-popup img {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--gold-primary);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .profile-popup h3 {
+            color: #fff; margin-bottom: 5px; font-family: 'Cinzel', serif;
+        }
+        .profile-popup .subtitle {
+            color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 20px; display: block;
+        }
+        .profile-links {
+            display: flex; justify-content: center; gap: 15px; margin-top: 20px;
+        }
+        .profile-links a {
+            padding: 10px 20px;
+            background: #222;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .profile-links a:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+        .close-btn {
+            position: absolute; top: 15px; right: 20px;
+            background: none; border: none; color: #666; font-size: 24px; cursor: pointer;
+        }
+        .close-btn:hover { color: #fff; }
 
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px 30px;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .profile-btn {
-                right: 20px;
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            .profile-popup {
-                width: 320px;
-            }
-            .colonies {
-                grid-template-columns: 1fr;
-            }
-            main {
-                padding: 80px 20px 40px;
-            }
-            .colony-image {
-                height: 200px;
-            }
+            .hero h2 { font-size: 2.2rem; }
+            .brand-box h1 { font-size: 1.8rem; }
+            .profile-trigger { padding: 8px 15px; }
+            .trigger-text { display: none; } /* Hide text on mobile, show only icon */
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div>
+        <div class="brand-box">
             <h1>MAHANATA GROUP</h1>
             <p>Build by SOS Infobulls</p>
         </div>
     </header>
 
+    <div class="profile-trigger" onclick="toggleProfile()">
+        <div class="trigger-text">
+            <span>Welcome</span>
+            <strong>Virendra Singh</strong>
+        </div>
+        <div class="trigger-icon">VS</div>
+    </div>
+
+    <div class="profile-overlay" id="profileOverlay" onclick="toggleProfile()"></div>
+    <div class="profile-popup" id="profilePopup">
+        <button class="close-btn" onclick="toggleProfile()">×</button>
+        <img src="E:\chatgpt\WhatsApp Image 2025-11-25 at 4.18.33 PM (1).jpeg" alt="Profile">
+        <h3>Virendra Singh Parte</h3>
+        <span class="subtitle">Real Estate Consultant</span>
+        
+        <p style="color:#888; margin: 5px 0;">✉️  virendraparte591@gmail.com</p>
+        <p style="color:#888; margin: 5px 0;">📞 +91 98938 62775</p>
+
+        <div class="profile-links">
+            <a href="https://www.instagram.com/veerendra_official_real_estate/" target="_blank">Instagram</a>
+            <a href="https://wa.me/77469991555" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="hero-content">
-            <h2>Discover Luxury Living</h2>
-            <p>Exclusive colonies crafted for the discerning elite.</p>
+            <h2>The Art of Living</h2>
+            <p>Where Luxury Meets Legacy in Indore</p>
         </div>
     </section>
 
-    <button class="profile-btn" onclick="toggleProfile()">👤</button>
-
-    <div class="profile-overlay" id="profileOverlay" onclick="toggleProfile()"></div>
-    <div class="profile-popup" id="profilePopup"> <center>
-        <button class="close-btn" onclick="toggleProfile()">×</button>
-        <img src="E:\chatgpt\WhatsApp Image 2025-11-25 at 4.18.33 PM (1).jpeg" alt="Profile Image">
-        <h3>Virendra Singh Parte </h3>
-        <p>Email: virendraparte591@gmail.com</p>
-        <p>Phone: +91 98938 62775</p>
-        <a href="https://www.instagram.com/veerendra_official_real_estate/" target="_blank">Instagram</a>
-        <a href="https://wa.me/77469991555" target="_blank">WhatsApp</a> </center>
-    </div>
-
     <main>
-        <h2>Explore Our Colonies</h2>
+        <h2 class="section-title">Exclusive Collections</h2>
+        
         <div class="colonies">
-
             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Colony 1</h3>
-                    <p>Experience unparalleled luxury in our premier residential enclave, featuring state-of-the-art amenities and breathtaking views.</p>
-                    <a href="c1.html"> <button class="colony-btn" >Explore</button> </a>
+                    <h3>Rudraksh Aangan</h3>
+                    <p>Experience unparalleled luxury in our premier residential enclave, featuring state-of-the-art amenities.</p>
+                    <a href="c1.html" style="text-decoration: none;"> 
+                        <button class="colony-btn">View Details</button> 
+                    </a>
                 </div>
             </div>
 
             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Colony 2</h3>
-                    <p>Indulge in modern elegance with spacious layouts, premium finishes, and a community designed for sophisticated living.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 2')">Explore</button>
+                    <h3>Tulip Park</h3>
+                    <p>Indulge in modern elegance with spacious layouts, premium finishes, and a sophisticated community.</p>
+                     <a href="c2.html" style="text-decoration: none;"> 
+                    <button class="colony-btn" >View Details</button> </a>
                 </div>
             </div>
 
             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Colony 3</h3>
-                    <p>Discover tranquility amidst opulence, with lush landscapes, private gardens, and exclusive access to world-class facilities.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 3')">Explore</button>
+                    <h3>Emerald Garden</h3>
+                    <p>Discover tranquility amidst opulence, with lush landscapes and private gardens.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 3')">View Details</button>
                 </div>
             </div>
 
-            <div class="colony-card">
+             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Colony 4</h3>
-                    <p>Elevate your lifestyle with cutting-edge architecture, smart home features, and a vibrant neighborhood atmosphere.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 4')">Explore</button>
+                    <h3>The Pinnacle</h3>
+                    <p>Elevate your lifestyle with cutting-edge architecture and smart home features.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 4')">View Details</button>
                 </div>
             </div>
 
             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Colony 5</h3>
-                    <p>Enjoy luxurious comfort blended with peaceful surroundings, offering top-class amenities and unmatched modern design.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 5')">Explore</button>
+                    <h3>Grand Horizon</h3>
+                    <p>Enjoy luxurious comfort blended with peaceful surroundings and top-class amenities.</p>
+                    <button class="colony-btn" onclick="alert('Navigate to Colony 5')">View Details</button>
                 </div>
             </div>
 
         </div>
+         <BR><BR><BR>
+         <h2 class="section-title"> OTHER PROPERTIES INFO. </h2>
+         <BR><BR><BR>
+
+
     </main>
 
-    <footer style="
-    background: #0d0d0d;
-    padding: 50px 20px;
-    color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-">
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>SOS Infrabulls</h4>
+                <p>Premium real estate solutions with trust, quality, and transparency. Building the future of Indore.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 Shagun Tower, Vijay Nagar, Indore</p>
+                <p>📞 +91 98938 62775</p>
+                <p>✉️ virendraparte591@gmail.com</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; font-size: 0.8rem;">
+            © 2026 SOS Infrabulls • All Rights Reserved
+        </div>
+    </footer>
 
-    <!-- Logo + About -->
-    <div style="flex: 1; min-width: 240px;">
-        <h2 style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 1px;">SOS Infrabulls</h2>
-        <p style="margin-top: 10px; opacity: 0.8; line-height: 1.6;">
-            Premium real estate solutions with trust, quality and transparency.
-        </p>
-    </div>
-
-    <!-- Quick Links -->
-    <div style="flex: 1; min-width: 200px;">
-        <h3 style="font-size: 18px; margin-bottom: 10px;">Quick Links</h3>
-        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
-            <li><a href="#home" style="color: #fff; text-decoration: none; opacity: 0.8;">Home</a></li>
-            <li><a href="#about" style="color: #fff; text-decoration: none; opacity: 0.8;">About Us</a></li>
-            <li><a href="#projects" style="color: #fff; text-decoration: none; opacity: 0.8;">Projects</a></li>
-            <li><a href="#contact" style="color: #fff; text-decoration: none; opacity: 0.8;">Contact</a></li>
-        </ul>
-    </div>
-
-    <!-- Contact Info -->
-    <div style="flex: 1; min-width: 200px;">
-        <h3 style="font-size: 18px; margin-bottom: 10px;">Contact</h3>
-        <p style="margin: 5px 0; opacity: 0.8;">📍 Shagun Tower , Vijay Nagar , Indore</p>
-        <p style="margin: 5px 0; opacity: 0.8;">📞 +91 9893862775</p>
-        <p style="margin: 5px 0; opacity: 0.8;">✉️ virendraparte591@gmail.com</p>
-    </div>
-
-</footer>
-
-<div style="
-    background: #000;
-    padding: 12px;
-    color: #aaa;
-    text-align: center;
-    font-size: 14px;
-    margin-top: -10px;
-">
-    © 2026 SOS Infrabulls • All Rights Reserved
-</div>
-
-
-    <!-- FIXED POPUP JS (NO CHANGES TO ANY OTHER CODE) -->
     <script>
         function toggleProfile() {
-            let popup = document.getElementById("profilePopup");
-            let overlay = document.getElementById("profileOverlay");
+            const popup = document.getElementById("profilePopup");
+            const overlay = document.getElementById("profileOverlay");
 
             if (popup.classList.contains("active")) {
                 popup.classList.remove("active");
-                overlay.style.display = "none";
+                setTimeout(() => { overlay.style.display = "none"; }, 300);
             } else {
-                popup.classList.add("active");
                 overlay.style.display = "block";
+                // Small delay to allow display block to apply before adding class for transition
+                setTimeout(() => { popup.classList.add("active"); }, 10);
             }
         }
     </script>
