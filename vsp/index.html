@@ -43,17 +43,19 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- Header --- */
+        /* --- Header & Brand (Fixed for Mobile) --- */
         header {
             position: absolute;
             width: 100%;
             padding: 40px 50px;
             z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-
+        .brand-box {
+            position: absolute; 
+            top: 40px;
+            left: 50px;
+            z-index: 15;
+        }
         .brand-box h1 {
             font-family: 'Cinzel', serif;
             font-size: 2.5rem;
@@ -62,7 +64,6 @@
             color: transparent;
             letter-spacing: 2px;
         }
-
         .brand-box p {
             color: var(--gold-primary);
             font-size: 0.9rem;
@@ -71,11 +72,11 @@
             margin-top: 5px;
         }
 
-        /* --- New Profile Button (Access Badge Style) --- */
+        /* --- Profile Button (Fixed for Mobile) --- */
         .profile-trigger {
-            position: fixed;
+            position: fixed; 
             top: 30px;
-            right: 40px;
+            right: 40px; 
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -96,74 +97,42 @@
             transform: translateY(-2px);
         }
 
-        .trigger-text {
-            text-align: right;
-        }
+        .trigger-text { text-align: right; }
         .trigger-text span {
-            display: block;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
+            display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;
         }
         .trigger-text strong {
-            color: var(--gold-light);
-            font-size: 0.9rem;
+            color: var(--gold-light); font-size: 0.9rem;
         }
 
         .trigger-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gold-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            font-weight: bold;
+            width: 40px; height: 40px; border-radius: 50%; background: var(--gold-primary);
+            display: flex; justify-content: center; align-items: center; color: black; font-weight: bold;
         }
 
         /* --- Hero Section --- */
         .hero {
             height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            display: flex; align-items: center; justify-content: center; position: relative;
             background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
         }
-
         .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #050505);
+            content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), #050505);
         }
-
         .hero-content {
-            z-index: 2;
-            text-align: center;
-            animation: fadeIn 1.5s ease-out;
-            padding: 20px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
+            z-index: 2; text-align: center; animation: fadeIn 1.5s ease-out; padding: 20px;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-
         .hero h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--text-main);
+            font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 20px; color: var(--text-main);
             text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
-        
         .hero p {
-            font-size: 1.2rem;
-            color: var(--gold-light);
+            font-size: 1.2rem; color: var(--gold-light);
         }
 
-        /* --- Main Content --- */
+        /* --- Main Content (Restored CSS) --- */
         main {
             padding: 80px 20px;
             max-width: 1400px;
@@ -184,7 +153,7 @@
             gap: 40px;
         }
 
-        /* --- Cards --- */
+        /* --- Cards (Restored CSS) --- */
         .colony-card {
             background: var(--bg-panel);
             border-radius: 15px;
@@ -253,7 +222,7 @@
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- Footer --- */
+        /* --- Footer (Restored CSS) --- */
         footer {
             background: #000;
             border-top: 1px solid #222;
@@ -280,65 +249,51 @@
         .footer-col a { color: #888; text-decoration: none; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold-light); }
 
-        /* --- Profile Modal --- */
+        /* --- Profile Modal (Includes New Buttons) --- */
         .profile-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: none;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; display: none;
         }
 
         .profile-popup {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 400px;
-            background: #111;
-            border: 1px solid var(--gold-primary);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            z-index: 2001;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s ease;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.15);
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            width: 90%; max-width: 400px; background: #111; border: 1px solid var(--gold-primary);
+            padding: 40px; border-radius: 20px; text-align: center; z-index: 2001; opacity: 0;
+            pointer-events: none; transition: 0.3s ease; box-shadow: 0 0 50px rgba(212, 175, 55, 0.15);
         }
 
         .profile-popup.active {
-            opacity: 1;
-            pointer-events: all;
-            transform: translate(-50%, -50%) scale(1);
+            opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1);
         }
-
         .profile-popup img {
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--gold-primary);
-            margin-bottom: 20px;
-            object-fit: cover;
+            width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold-primary);
+            margin-bottom: 20px; object-fit: cover;
+        }
+        .profile-popup h3 { color: #fff; margin-bottom: 5px; font-family: 'Cinzel', serif; }
+        .profile-popup .subtitle { color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        
+        /* New Style for button links */
+        .contact-links {
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            margin-top: 20px;
         }
 
-        .profile-popup h3 {
-            color: #fff; margin-bottom: 5px; font-family: 'Cinzel', serif;
-        }
-        .profile-popup .subtitle {
-            color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 20px; display: block;
-        }
-        .profile-links {
-            display: flex; justify-content: center; gap: 15px; margin-top: 20px;
-        }
-        .profile-links a {
-            padding: 10px 20px;
+        .contact-links a {
+            padding: 12px 20px;
             background: #222;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
             border: 1px solid #333;
             transition: 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .profile-links a:hover {
+        .contact-links a:hover {
             border-color: var(--gold-primary);
             color: var(--gold-primary);
         }
@@ -348,11 +303,26 @@
         }
         .close-btn:hover { color: #fff; }
 
+        /* --- Responsive Fixes (Mobile: Fixes Header Overlap) --- */
         @media (max-width: 768px) {
-            .hero h2 { font-size: 2.2rem; }
+            /* Brand Box Positioning */
+            .brand-box {
+                left: 20px; 
+                top: 20px;
+            }
             .brand-box h1 { font-size: 1.8rem; }
-            .profile-trigger { padding: 8px 15px; }
-            .trigger-text { display: none; } /* Hide text on mobile, show only icon */
+            .brand-box p { display: none; } 
+
+            /* Profile Trigger Positioning */
+            .profile-trigger { 
+                top: 20px;
+                right: 20px; 
+                padding: 8px 15px;
+            }
+            .trigger-text { display: none; } 
+
+            .hero h2 { font-size: 2.2rem; }
+            .colonies { grid-template-columns: 1fr; } /* Stack cards on mobile */
         }
     </style>
 </head>
@@ -380,12 +350,13 @@
         <h3>Virendra Singh Parte</h3>
         <span class="subtitle">Real Estate Consultant</span>
         
-        <p style="color:#888; margin: 5px 0;">✉️  virendraparte591@gmail.com</p>
-        <p style="color:#888; margin: 5px 0;">📞 +91 98938 62775</p>
-
-        <div class="profile-links">
+        <div class="contact-links" style="margin-top: 5px;">
+            <a href="https://mail.google.com/mail/u/0/#sent/FFNDWMkwNvcbMNcThlMzfBpvbFxcxqjv?compose=DmwnWtDqMjDwKWxmVxMWWCqldWVppMjgGlqzTpxMXvqDBXMzmhcZRMPNfvzmPHzrWnbXJXQLDVGq" target="_blank">✉️ virendraparte591@gmail.com</a>
+            <a href="tel:+919893862775" target="_blank">📞 +91 98938 62775</a>
+        </div>
+        <div class="contact-links">
             <a href="https://www.instagram.com/veerendra_official_real_estate/" target="_blank">Instagram</a>
-            <a href="https://wa.me/77469991555" target="_blank">WhatsApp</a>
+            <a href="https://wa.me/+917746991555" target="_blank">WhatsApp</a>
         </div>
     </div>
 
@@ -424,18 +395,20 @@
             <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>Emerald Garden</h3>
+                    <h3>Madhur Dreams</h3>
                     <p>Discover tranquility amidst opulence, with lush landscapes and private gardens.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 3')">View Details</button>
+                    <a href="c3.html" style="text-decoration: none;"> 
+                    <button class="colony-btn" >View Details</button> </a>
                 </div>
             </div>
 
              <div class="colony-card">
                 <div class="colony-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="colony-content">
-                    <h3>The Pinnacle</h3>
+                    <h3>Bottle Greens</h3>
                     <p>Elevate your lifestyle with cutting-edge architecture and smart home features.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 4')">View Details</button>
+                    <a href="c4.html" style="text-decoration: none;"> 
+                    <button class="colony-btn" >View Details</button></a>
                 </div>
             </div>
 
@@ -444,16 +417,15 @@
                 <div class="colony-content">
                     <h3>Grand Horizon</h3>
                     <p>Enjoy luxurious comfort blended with peaceful surroundings and top-class amenities.</p>
-                    <button class="colony-btn" onclick="alert('Navigate to Colony 5')">View Details</button>
+                    <a href="c5.html" style="text-decoration: none;"> 
+                    <button class="colony-btn" >View Details</button></a>
                 </div>
             </div>
 
         </div>
-         <BR><BR><BR>
-         <h2 class="section-title"> OTHER PROPERTIES INFO. </h2>
-         <BR><BR><BR>
-
-
+        <BR><BR><BR>
+        <h2 class="section-title"> OTHER PROPERTIES INFO. </h2>
+        <BR><BR><BR>
     </main>
 
     <footer>
@@ -489,10 +461,9 @@
 
             if (popup.classList.contains("active")) {
                 popup.classList.remove("active");
-                setTimeout(() => { overlay.style.display = "none"; }, 300);
+                setTimeout(() => { overlay.style.display = "none"; }, 300); 
             } else {
                 overlay.style.display = "block";
-                // Small delay to allow display block to apply before adding class for transition
                 setTimeout(() => { popup.classList.add("active"); }, 10);
             }
         }
